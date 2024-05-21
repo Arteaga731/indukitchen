@@ -1,0 +1,132 @@
+﻿@model induwbd.Models.Pedido
+
+@{
+    ViewBag.Title = "Detalles del Pedido";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        h2, h3 {
+            color: #dc3545;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .details-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+
+            .btn-primary:hover {
+                background-color: #c82333;
+                border-color: #bd2130;
+            }
+
+        .table thead th {
+            background-color: #dc3545;
+            color: #fff;
+        }
+
+        .table tbody tr:hover {
+            background-color: #f5c6cb;
+        }
+
+        dt {
+            color: #333;
+            font-weight: bold;
+        }
+
+        dd {
+            margin-left: 0;
+            padding-bottom: 10px;
+        }
+
+        .btn {
+            color: #fff;
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+
+            .btn:hover {
+                background-color: #c82333;
+                border-color: #bd2130;
+            }
+
+        .table td, .table th {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>@ViewBag.Title</h2>
+
+        <div class="details-container">
+            <h4>Pedido</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.FechaPedido)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.FechaPedido)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Estado)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Estado)
+                </dd>
+            </dl>
+        </div>
+
+        <p class="text-center">
+            <a href="@Url.Action("Index")" class="btn btn-primary" style="padding: 10px 20px; text-decoration: none;">Volver a la lista</a>
+        </p>
+
+        @if (ViewBag.Detalles != null)
+        {
+            <h3>Detalles del Pedido</h3>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.Detalles)
+                        {
+                            <tr>
+                                <td>@item.ProductoId</td>
+                                <td>@item.Cantidad</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+</body>
+</html>

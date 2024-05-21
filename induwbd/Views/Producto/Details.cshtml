@@ -1,0 +1,89 @@
+﻿@model induwbd.Models.Producto
+
+@{
+    ViewBag.Title = "Detalles del Producto";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        h2 {
+            color: #dc3545;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .table th, .table td {
+            border-top: none;
+            color: #343a40;
+        }
+
+        .table th {
+            width: 150px;
+            font-weight: normal;
+        }
+
+        .btn-primary {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+
+            .btn-primary:hover {
+                background-color: #c82333;
+                border-color: #bd2130;
+            }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+
+            .btn-secondary:hover {
+                background-color: #5a6268;
+                border-color: #545b62;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>@ViewBag.Title</h2>
+
+        <div>
+            <h4>Producto</h4>
+            <hr />
+            <table class="table">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Nombre)</th>
+                    <td>@Html.DisplayFor(model => model.Nombre)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Descripcion)</th>
+                    <td>@Html.DisplayFor(model => model.Descripcion)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Precio)</th>
+                    <td>@Html.DisplayFor(model => model.Precio)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Stock)</th>
+                    <td>@Html.DisplayFor(model => model.Stock)</td>
+                </tr>
+            </table>
+        </div>
+        <p>
+            <a href="@Url.Action("Edit", new { id = Model.ProductoId })" class="btn btn-primary">Editar</a> |
+            <a href="@Url.Action("Index")" class="btn btn-secondary">Volver a la lista</a>
+        </p>
+    </div>
+</body>
+</html>

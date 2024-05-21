@@ -1,0 +1,98 @@
+﻿@model induwbd.Models.Producto
+
+@{
+    ViewBag.Title = "Eliminar Producto";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        h2 {
+            color: #dc3545;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h3 {
+            color: #343a40;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .table {
+            margin-bottom: 20px;
+        }
+
+        .dl-horizontal dt {
+            color: #343a40;
+            width: 150px;
+        }
+
+        .dl-horizontal dd {
+            color: #343a40;
+            margin-left: 170px;
+            margin-bottom: 10px;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+
+            .btn-danger:hover {
+                background-color: #c82333;
+                border-color: #bd2130;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>@ViewBag.Title</h2>
+
+        <h3>¿Está seguro que desea eliminar este producto?</h3>
+        <div>
+            <table class="table">
+                <tr>
+                    <th>Propiedad</th>
+                    <th>Valor</th>
+                </tr>
+                <tr>
+                    <td>Nombre</td>
+                    <td>@Html.DisplayFor(model => model.Nombre)</td>
+                </tr>
+                <tr>
+                    <td>Descripción</td>
+                    <td>@Html.DisplayFor(model => model.Descripcion)</td>
+                </tr>
+                <tr>
+                    <td>Precio</td>
+                    <td>@Html.DisplayFor(model => model.Precio)</td>
+                </tr>
+                <tr>
+                    <td>Stock</td>
+                    <td>@Html.DisplayFor(model => model.Stock)</td>
+                </tr>
+            </table>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-actions no-color">
+                    <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+                    @Html.ActionLink("Cancelar", "Index")
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>

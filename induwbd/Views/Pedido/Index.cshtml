@@ -1,0 +1,88 @@
+﻿@model IEnumerable<induwbd.Models.Pedido>
+
+@{
+    ViewBag.Title = "Pedidos";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        h2 {
+            color: #000000;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .btn-primary {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+
+            .btn-primary:hover {
+                background-color: #c82333;
+                border-color: #bd2130;
+            }
+
+        .table th,
+        .table td {
+            padding: 10px;
+            vertical-align: middle;
+        }
+
+        .table th {
+            background-color: #f8f9fa;
+            border-top: none;
+        }
+
+        .table td {
+            border-top: 1px solid #dee2e6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>@ViewBag.Title</h2>
+
+        <p>
+            <a href="@Url.Action("Create")" class="btn btn-primary">Crear nuevo pedido</a>
+        </p>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Fecha de Pedido</th>
+                    <th>Estado</th>
+                    <th>Detalles</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.FechaPedido</td>
+                        <td>@item.Estado</td>
+                        <td>
+                            <a href="@Url.Action("Details", new { id = item.PedidoId })" class="btn btn-secondary">Detalles</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

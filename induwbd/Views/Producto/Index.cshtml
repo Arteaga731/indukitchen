@@ -1,0 +1,76 @@
+﻿@model IEnumerable<induwbd.Models.Producto>
+
+@{
+    ViewBag.Title = "Productos";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        h2 {
+            color: #dc3545;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .btn-action {
+            background-color: #dc3545;
+            color: white;
+            padding: 5px 10px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+            .btn-action:hover {
+                background-color: #c82333;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>@ViewBag.Title</h2>
+
+        <p>
+            <a href="@Url.Action("Create")" class="btn btn-action">Crear nuevo Producto</a>
+        </p>
+
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Nombre</td>
+                        <td>@item.Descripcion</td>
+                        <td>@item.Precio</td>
+                        <td>@item.Stock</td>
+                        <td>
+                            <a href="@Url.Action("Edit", new { id = item.ProductoId })" class="btn-action">Editar</a>
+                            <a href="@Url.Action("Details", new { id = item.ProductoId })" class="btn-action">Detalles</a>
+                            <a href="@Url.Action("Delete", new { id = item.ProductoId })" class="btn-action">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
